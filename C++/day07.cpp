@@ -39,25 +39,29 @@ int main() {
         while (getline(x, t, ' ')) {
             cmd[n] = t; n++;
         }
-        if (cmd[0] == "$") {
-            if (cmd[1] == "cd") {
-                if (cmd[2] == "/") {
+        if (cmd[0] == "$" && cmd[1] == "cd") {
+            switch (cmd[2]):
+                case '/':
                     folder_index = 0; //return to /
-                } else if (cmd[2] == "..") {
+                    break;
+                case '.':
                     folder_index = folders[folder_index].parent_index; //return to parent
-                } else {
+                    break;
+                default:
                     for (int i = 0; i < folders[folder_index].children.size(); i++) { //all children
                         int x = folders[folder_index].children[i];
                         if (folders[x].name == cmd[2])
                             folder_index = folders[x].index; //find searched directory
                     }
-                }
+                    break;
             } //cmd
         } else { 
             file dir;
-            if (cmd[0] == "dir") dir.size = 0;
-            else dir.size = stoi(cmd[0]);
-            dir.index = num_files; dir.parent_index = folder_index; dir.name = cmd[1]; dir.total_size = 0;
+            dir.size = (cmd[0] == "dir") ? 0 : stoi(cmd[0]);
+            dir.index = num_files;
+            dir.parent_index = folder_index; 
+            ir.name = cmd[1];
+            dir.total_size = 0;
             folders.push_back(dir);
             folders[folder_index].children.push_back(dir.index);
             num_files++;
