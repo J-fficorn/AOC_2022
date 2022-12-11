@@ -12,7 +12,7 @@ int main() {
     int cur_cals = 0, elves[100000], i = 0;
     string s;
     while (getline(fin, s)) {
-        if (s.size() <= 1) {
+        if (s == "\n\n") {
             elves[i] = cur_cals;
             cur_cals = 0;
             i++;
