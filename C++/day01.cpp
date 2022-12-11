@@ -4,7 +4,7 @@
 #include <string>
 #include <stdio.h>
 using namespace std;
-ifstream fin("text.in");
+ifstream fin("i");
 bool part_one = false;
 
 int main() {
