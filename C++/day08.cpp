@@ -34,7 +34,7 @@ void find_views(int r, int c) {
 }
 
 int main() {
-    auto start = chrono::steady_clock::now();
+    auto time_start = chrono::steady_clock::now();
     string s;
     while (fin >> s) {
         total_cols = s.length();
@@ -56,9 +56,9 @@ int main() {
                     temp_scenery *= views[i][j][k];
                 scenery_trees = max(scenery_trees, temp_scenery);
             }
-    cout << scenery_trees;
-    auto end = chrono::steady_clock::now();
-    auto elapsed = chrono::duration_cast<chrono::nanoseconds>(end - start);
-    printf("\n%f ns", elapsed.count() * 1e-9);
+    cout << scenery_trees;   
+    auto time_end = chrono::steady_clock::now();
+    auto time_elapsed = chrono::duration_cast<std::chrono::milliseconds>(time_end - time_start);
+    cout << endl << time_elapsed.count() << " ms" << endl;
     return 0;
 }
