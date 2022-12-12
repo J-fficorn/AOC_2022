@@ -34,7 +34,7 @@ queue<long> items(string s, string t = "") {
 } //create q of items
 
 int main() {
-    auto start = chrono::steady_clock::now();
+    auto time_start = chrono::steady_clock::now();
     string s;
     int n = 0;
     while (getline(fin, s)) { input[n] = s; n++; }
@@ -69,7 +69,8 @@ int main() {
     sort(notes, notes + monkey_index, [](monkey a, monkey b) -> bool {return a.inspected > b.inspected;});
     auto end = chrono::steady_clock::now();
     cout << notes[0].inspected * notes[1].inspected;
-    auto elapsed = chrono::duration_cast<std::chrono::nanoseconds>(end - start);
-    cout << endl << elapsed.count() * 1e-9 << " ns" << endl;
+    auto time_end = chrono::steady_clock::now();
+    auto time_elapsed = chrono::duration_cast<std::chrono::milliseconds>(time_end - time_start);
+    printf("\n%.2f ms\n", time_elapsed.count());
     return 0;
 }
