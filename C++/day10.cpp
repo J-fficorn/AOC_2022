@@ -26,8 +26,8 @@ void render_crt() {
     }
 }
 
-int main() {
-    auto start = chrono::steady_clock::now();
+int main() {    
+    auto time_start = chrono::steady_clock::now();
     string s, t, cmd[2];
     int n = 0, cycle = 1, value = 1;
     values[cycle] = value; //0th cycle = 1
@@ -52,8 +52,8 @@ int main() {
     int cycle_numbers[] = {20, 60, 100, 140, 180, 220};
     cout << sum_interesting_freqs(cycle_numbers) << endl;
     render_crt();
-    auto end = chrono::steady_clock::now();
-    auto elapsed = chrono::duration_cast<std::chrono::nanoseconds>(end - start);
-    cout << endl << elapsed.count() * 1e-9 << " ns" << endl;
+    auto time_end = chrono::steady_clock::now();
+    auto time_elapsed = chrono::duration_cast<std::chrono::milliseconds>(time_end - time_start);
+    printf("\n%.2f ms\n", time_elapsed.count());
     return 0;
 }
