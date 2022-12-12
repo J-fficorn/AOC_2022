@@ -27,7 +27,7 @@ int dfs_sum(int x) {
 }
 
 int main() {
-    auto start = chrono::steady_clock::now();
+    auto time_start = chrono::steady_clock::now();
     string s, t, cmd[10];
     int n = 0, num_files = 1, folder_index = 0, total_directory_size = 0;
     file main = {0, 0, 0, 0, "/"}; folders.push_back(main);
@@ -76,8 +76,8 @@ int main() {
         total_directory_size = min_max;
     } //total hours wasted
     cout << total_directory_size;
-    auto end = chrono::steady_clock::now();
-    auto elapsed = chrono::duration_cast<std::chrono::nanoseconds>(end - start);
-    cout << endl << elapsed.count() * 1e-9 << " ns" << endl;
+    auto time_end = chrono::steady_clock::now();
+    auto time_elapsed = chrono::duration_cast<std::chrono::milliseconds>(time_end - time_start);
+    cout << endl << time_elapsed.count() << " ms" << endl;
     return 0;
 }
