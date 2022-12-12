@@ -20,7 +20,7 @@ int move_segment(int a, int b) {
 }
 
 int main() {
-    auto start = chrono::steady_clock::now();
+    auto time_start = chrono::steady_clock::now();
     string s, t, cmd[2];
     int length = part_one ? 2 : 10;
     vector<pii> rope(length, make_pair(0, 0));
@@ -52,8 +52,8 @@ int main() {
         }
     }
     cout << visited.size();
-    auto end = chrono::steady_clock::now();
-    auto elapsed = chrono::duration_cast<std::chrono::nanoseconds>(end - start);
-    cout << endl << elapsed.count() * 1e-9 << " ns" << endl;
+    auto time_end = chrono::steady_clock::now();
+    auto time_elapsed = chrono::duration_cast<std::chrono::milliseconds>(time_end - time_start);
+    printf("\n%.2f ms\n", time_elapsed.count());
     return 0;
 }
