@@ -3,12 +3,13 @@
 #include <string>
 #include <sstream>
 #include <stdio.h>
+#include <chrono>
 using namespace std;
 ifstream fin("i");
 bool part_one = false;
 
 int main() {
-    long start = time(NULL);
+    auto time_start = chrono::steady_clock::now();
     string s, t, u;
     int contained = 0;
     while (fin >> s) {
@@ -42,7 +43,8 @@ int main() {
         }
     }
     long end = time(NULL);
-    cout << contained;
-    cout << endl << end - start << " ms" << endl;
+    auto time_end = chrono::steady_clock::now();
+    auto time_elapsed = chrono::duration_cast<std::chrono::milliseconds>(time_end - time_start);
+    cout << endl << time_elapsed.count() << " ms" << endl;
     return 0;
 }
