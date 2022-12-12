@@ -50,7 +50,7 @@ int main() {
         notes[monkey_index].throw_false = stoi(input[indexes[5]].substr(30));
         monkey_index++;
     } //parsing monkey list
-    for (int i = 0; i < 10000; i++) { //rounds
+    for (int i = 0; i < part_one ? 20 : 10000; i++) { //rounds
         for (int j = 0; j < monkey_index; j++) { //turns
             while (!notes[j].items.empty()) {
                 long item = notes[j].items.front(),
