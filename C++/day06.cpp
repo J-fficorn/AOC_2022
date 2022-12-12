@@ -4,6 +4,7 @@
 #include <sstream>
 #include <vector>
 #include <stdio.h>
+#include <chrono>
 #define ss stringstream
 using namespace std;
 ifstream fin("i");
@@ -11,7 +12,7 @@ bool part_one = false;
 int scale = (part_one ? 4 : 13);
 
 int main() {
-    long start = time(NULL);
+    auto time_start = chrono::steady_clock::now();
     string s;
     getline(fin, s);
     for (int i = scale; i < s.size(); i++) {
@@ -31,7 +32,8 @@ int main() {
             break;
         }
     }
-    long end = time(NULL);
-    cout << endl << end - start << " ms" << endl;
+    auto time_end = chrono::steady_clock::now();
+    auto time_elapsed = chrono::duration_cast<std::chrono::milliseconds>(time_end - time_start);
+    cout << endl << time_elapsed.count() << " ms" << endl;
     return 0;
 }
