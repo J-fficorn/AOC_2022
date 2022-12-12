@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <string>
 #include <stdio.h>
+#include <chrono>
 using namespace std;
 ifstream fin("i");
 bool part_one = false;
@@ -12,7 +13,7 @@ struct Move {
 } moves[26];
 
 int main() {
-    long start = time(NULL);
+    auto time_start = chrono::steady_clock::now();
     int total_score = 0;
     moves[0] = {'A', 'Z', 'Y', 1};
     moves[1] = {'B', 'X', 'Z', 2};
@@ -34,7 +35,8 @@ int main() {
         }
     }
     cout << total_score;
-    long end = time(NULL);
-    cout << endl << end - start << " ms" << endl;
+    auto time_end = chrono::steady_clock::now();
+    auto time_elapsed = chrono::duration_cast<std::chrono::milliseconds>(time_end - time_start);
+    cout << endl << time_elapsed.count() << " ms" << endl;
     return 0;
 }
