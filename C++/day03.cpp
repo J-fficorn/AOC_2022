@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <stdio.h>
+#include <chrono>
 using namespace std;
 ifstream fin("i");
 bool part_one = false;
@@ -22,7 +23,7 @@ void initiate_freq() {
 }
 
 int main() {
-    long start = time(NULL);
+    auto time_start = chrono::steady_clock::now();
     string s;
     int sum = 0, lines = 1;
     initiate_freq();
@@ -57,7 +58,8 @@ int main() {
         }
     }
     cout << sum;
-    long end = time(NULL);
-    cout << endl << end - start << " ms" << endl;
+    auto time_end = chrono::steady_clock::now();
+    auto time_elapsed = chrono::duration_cast<std::chrono::milliseconds>(time_end - time_start);
+    cout << endl << time_elapsed.count() << " ms" << endl;
     return 0;
 }
