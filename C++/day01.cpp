@@ -9,7 +9,7 @@ ifstream fin("i");
 bool part_one = false;
 
 int main() {
-    long time_start = time(NULL);
+    auto time_start = chrono::steady_clock::now();
     int cur_cals = 0, elves[100000], i = 0;
     string s;
     while (getline(fin, s)) {
