@@ -5,6 +5,7 @@
 #include <vector>
 #include <stdio.h>
 #include <stack>
+#include <chrono>
 #define ss stringstream
 using namespace std;
 ifstream fin("i");
@@ -13,7 +14,7 @@ vector<stack<char>> supplies;
 vector<vector<char>> input;
 
 int main() {
-    long start = time(NULL);
+    auto time_start = chrono::steady_clock::now();
     string s, t, u, top_containers = "";
     int stacks = 0;
     for (int i = 0; i < 20; i++) {
@@ -64,10 +65,10 @@ int main() {
             }
         }
     }
-    for (int i = 0; i < 9; i++) {
+    for (int i = 0; i < 9; i++)
         cout << supplies[i].top();
-    }
-    long end = time(NULL);
-    cout << endl << end - start << " ms" << endl;
+    auto time_end = chrono::steady_clock::now();
+    auto time_elapsed = chrono::duration_cast<std::chrono::milliseconds>(time_end - time_start);
+    cout << endl << time_elapsed.count() << " ms" << endl;
     return 0;
 }
