@@ -7,7 +7,7 @@
 using namespace std;
 ifstream fin("i");
 bool part_one = false;
-bool cave_visited[1500][1500];
+bool cave_visited[200][1000];
 int r_max = 0, dc[3] = {0, -1, 1};
 
 bool dfs(int r, int c) {
